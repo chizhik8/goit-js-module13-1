@@ -1,18 +1,18 @@
 import axios from 'axios';
 
-const API_KEY = '';
+const API_KEY = 'AIzaSyCvlfAYmXyF6M3Lkc8n7wcZNhb_PEhS_fM';
 const baseURL = '';
-const signUpURL = '';
-const signInURL = '';
+const signUpURL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`;
+const signInURL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
 
-function signUp(user) {
-    // body
-    axios.post(signUpURL, user);
+
+const signUp = user => {
+    return axios.post(signUpURL, user);
 };
 
-function signIn(user) {
-    // body
-    axios.post(signInURL, user);
+const signIn = user => {
+    return axios.post(signInURL, user);
 };
+
 
 export { signIn, signUp };
