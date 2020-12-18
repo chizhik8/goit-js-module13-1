@@ -1,6 +1,7 @@
 import { refs } from './refs/refs';
 import { signIn, signUp, addBase } from './api/api';
 import './styles.css';
+import { data } from 'autoprefixer';
 
 
 console.log('refs', refs);
@@ -22,11 +23,16 @@ function getUserData(event) {
     // console.log(user);
 }
 
-function signUpData(event) {
+async function signUpData(event) {
     event.preventDefault();
     // console.log(event);
     // console.log(user);
-    signUp(user).then(response => console.log(response));
+    // signUp(user).then(response => console.log(response));
+    const response = await signUp(user);
+    const data = { email: response.data.email, localId: response.data.localId};
+    console.log(response);
+    console.log(data);
+
     refs.signUpForms.reset();
     resetUser();
 }
